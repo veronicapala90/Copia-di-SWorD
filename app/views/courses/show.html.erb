@@ -1,0 +1,37 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, @course.name %>
+<div class="text-center">
+    <aside class="text-center" >
+        <h1>
+          <%= @course.name %>
+        </h1>
+        <h2>
+          <%= @course.content %>
+        </h2>
+      <% if @course.comments.any? %>
+          <h1 class="text-center">Posts (<%= @course.comments.count %>)</h1>
+          <ol class="comments">
+            <%= render @comments %>
+          </ol>
+          <% # since we are in a Users view, we need to specify that the pagination is for the posts %>
+          <% will_paginate @comments %>
+      <% end %>
+    </aside>
+</div>
+
+<div class="text-left">
+<h3>Write a post:</h3>
+<%= form_for([@course, @course.comments.build]) do |f| %>
+    <h3>
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </h3>
+    <h3>
+      <%= f.label :content %><br />
+      <%= f.text_field :content %>
+    </h3>
+    <h3>
+      <%= f.submit 'Post', class: 'btn btn-large btn-default' %> <%= link_to 'Back', courses_path, class: 'pull-right', class: 'btn btn-large btn-default' %>
+    </h3>
+<% end %>
+</div>

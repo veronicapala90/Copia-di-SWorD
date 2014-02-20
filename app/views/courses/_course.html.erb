@@ -1,0 +1,6 @@
+<li>
+  <%= link_to course.name, course %>
+  <% if current_user.admin? && !current_user?(user) %>
+      |  <%= link_to 'delete', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-default' %>
+  <% end %>
+</li>

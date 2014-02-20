@@ -1,0 +1,35 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, 'Home' %>
+
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <% if teacher? %>
+            <%= link_to 'New Course', newc_path, class: 'btn btn-large btn-default' %>
+        <% end %>
+      </section>
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+    </aside>
+    <div class="span8">
+      <%= render 'shared/post_form' %>
+      <h3>Wall</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>
+        Benvenuto al Poli!!!!
+    </h1>
+    <h2>
+        Registrati o fai il login per entrare nel sito!
+    </h2>
+    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-default' %>
+  </div>
+<% end %>

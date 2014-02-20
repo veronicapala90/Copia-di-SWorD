@@ -1,0 +1,11 @@
+<%= form_for(@comment) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="row">
+      <div class="field span7">
+        <%= f.text_area :content, placeholder: 'Write a comment' %>
+      </div>
+      <div class="span2">
+        <%= f.submit 'Post', class: 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>

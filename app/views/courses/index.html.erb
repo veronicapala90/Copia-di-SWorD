@@ -1,0 +1,14 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, 'All Courses' %>
+
+<h1>
+  All courses
+</h1>
+
+<%= will_paginate %>
+
+<ul class="courses">
+  <%= render @courses %>
+</ul>
+
+<%= will_paginate %>

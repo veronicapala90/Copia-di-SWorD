@@ -1,0 +1,20 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, 'New' %>
+
+<h1>New Course</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@course) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+
+        <%= f.submit 'Create my course', class: 'btn btn-large btn-default' %>
+    <% end %>
+  </div>
+</div>
